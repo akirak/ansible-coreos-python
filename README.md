@@ -14,18 +14,18 @@ Clone this repository to `roles` directory of your playbook, or use `ansible-gal
 
 Set `ansible_python_interpreter` to `/home/core/pypy/bin/pypy` in your inventory:
 
-```
+```ini
 [core]
 core-01
 
 [core:vars]
 ansible_ssh_user=core
-ansible_python_interpreterr=/home/core/pypy/bin/pypy
+ansible_python_interpreter=/home/core/pypy/bin/pypy
 ```
 
 If you are using Vagrant, your Vagrant file should include something like the following:
 
-```
+```ruby
     config.vm.provision "ansible" do |ansible|
       ansible.verbose = true
       ansible.playbook = "sites.yml"
@@ -38,7 +38,7 @@ If you are using Vagrant, your Vagrant file should include something like the fo
 
 To make Python available before all the other things, your playbook should start as follows (`gather_facts: False` is necessary):
 
-```
+```yaml
 ---
 - hosts: core
   gather_facts: False
@@ -50,7 +50,7 @@ To make Python available before all the other things, your playbook should start
 
 pip is installed as `/home/core/pypy/bin/pip`. To install pip packages via Ansible, you have to set the path as `executable` parameter in a `pip` task:
 
-```
+```yaml
 - name: install docker-py for supporting Docker
   pip:
     name: docker-py
