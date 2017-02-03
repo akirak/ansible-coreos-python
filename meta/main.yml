@@ -1,0 +1,9 @@
+galaxy_info:
+  author: Akira Komamura
+  description: Install Python to your home directory so you can run Ansible
+  issue_tracker_url: https://github.com/akirak/ansible-coreos-python/issues
+  license: BSD
+  min_ansible_version: 1.2
+  galaxy_tags: []
+
+dependencies: []
